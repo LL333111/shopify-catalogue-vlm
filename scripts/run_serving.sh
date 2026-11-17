@@ -5,7 +5,7 @@
 # usage: scripts/run_serving.sh <model-id-or-path> <prefix> <val|test> <qps-hint> [loadgen args...]
 #   results/<prefix>_offline_<split>/  raw.jsonl, offline.json, metrics.json, serving_env.json
 #   results/<prefix>_server_<split>/   server.json
-# env: SKIP_SERVER=1 to run only Offline + scoring; OFFLINE_CONCURRENCY (default 256)
+# env: SKIP_SERVER=1 to run only Offline + scoring; SKIP_OFFLINE=1 for Server only; OFFLINE_CONCURRENCY (default 256)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -26,6 +26,7 @@ for _ in $(seq 1 180); do
 done
 curl -sf localhost:8000/v1/models > /dev/null || { echo "vLLM not ready"; exit 1; }
 
+if [ "${SKIP_OFFLINE:-0}" != "1" ]; then
 $PY -m src.loadgen offline --name "$OFFLINE" --split "$SPLIT" --model "$PREFIX" \
   --concurrency "${OFFLINE_CONCURRENCY:-256}" "$@" 2>&1 | grep -v "Warning\|cached" | tail -25
 $PY -m src.score "results/$OFFLINE/raw.jsonl" 2> /dev/null | head -9
@@ -51,6 +52,8 @@ info = {
 json.dump(info, open(f"results/{name}/serving_env.json", "w"), indent=2)
 print(json.dumps(info))
 PYEOF
+
+fi
 
 if [ "${SKIP_SERVER:-0}" != "1" ]; then
   $PY -m src.loadgen server --name "$SERVER" --split "$SPLIT" --model "$PREFIX" \

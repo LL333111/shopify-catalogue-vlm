@@ -161,18 +161,20 @@ async def run_offline(args, config, items, client: Client) -> dict[str, Any]:
 async def run_server_once(args, items, client: Client, qps: float, seed: int) -> dict[str, Any]:
     """One open-loop Poisson run at `qps`. Returns the probe summary."""
     rng = random.Random(seed)
-    duration = max(args.duration, args.min_requests / qps)
     order = list(range(len(items)))
     rng.shuffle(order)
 
-    # Scheduled arrival offsets: warm-up window, then the measurement window.
+    # Scheduled arrival offsets: warm-up window, then a measurement window that
+    # lasts at least `duration` seconds and holds at least `min_requests` arrivals.
     arrivals: list[float] = []
+    measured_from = args.warmup
+    n_measured = 0
     t = 0.0
-    while t < args.warmup + duration:
+    while t < args.warmup + args.duration or n_measured < args.min_requests:
         t += rng.expovariate(qps)
         arrivals.append(t)
-    measured_from = args.warmup
-    n_measured = sum(1 for a in arrivals if a >= measured_from)
+        n_measured += t >= measured_from
+    duration = arrivals[-1] - args.warmup
     # More than this many late requests makes p99 > 12 s unavoidable: stop early.
     late_budget = math.floor((1 - TARGET_PERCENTILE) * n_measured)
 

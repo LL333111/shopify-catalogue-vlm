@@ -1,0 +1,10 @@
+{
+  "vllm": "0.34.0",
+  "torch": "2.14.0",
+  "transformers": "5.22.2",
+  "compressed_tensors": "0.17.0",
+  "gpu": "NVIDIA L40S, 46068 MiB, 44337 MiB, 595.112.07",
+  "vllm_command": "vllm serve /workspace/models/row2 --served-model-name row2_sft --max-model-len=32768 --limit-mm-per-prompt.video=0 --no-enable-prefix-caching",
+  "model_weights_gib": "8.44",
+  "kv_cache_tokens": "229,376"
+}

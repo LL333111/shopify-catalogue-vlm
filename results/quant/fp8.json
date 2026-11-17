@@ -1,0 +1,12 @@
+{
+  "source_model": "/workspace/models/row2",
+  "scheme": "fp8",
+  "ignore": [
+    "re:.*lm_head",
+    "re:.*visual.*"
+  ],
+  "calibration_samples": null,
+  "quantized_modules": 252,
+  "seconds": 4.592479177008499,
+  "size_gb": 4.884460009634495
+}
