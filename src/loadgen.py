@@ -263,6 +263,7 @@ async def run_server(args, items, client: Client) -> dict[str, Any]:
         )
         return result["valid"]
 
+    confirmed = False
     if not args.search:
         await probe(args.qps)
         best = args.qps if probes[-1]["valid"] else None
@@ -284,15 +285,23 @@ async def run_server(args, items, client: Client) -> dict[str, Any]:
                 qps = lo * 1.3
         best = lo
         if best is not None and args.confirm:
-            confirmed = await probe(best)  # re-run the final rate with a new seed
-            probes[-1]["confirmation"] = True
+            # Re-run the final rate with a new seed. If the repeat fails, step the
+            # rate down by the search precision and require two valid runs there.
+            for _ in range(4):
+                first_ok = True if best == lo else await probe(best)
+                second_ok = first_ok and await probe(best)
+                probes[-1]["confirmation"] = True
+                if second_ok:
+                    confirmed = True
+                    break
+                best = best / (1 + args.precision)
             if not confirmed:
                 best = None
     best_probe = next((p for p in reversed(probes) if p["target_qps"] == best), None)
     return {
         "scenario": "server",
         "max_valid_qps": best,
-        "confirmed": bool(args.search and args.confirm and best is not None),
+        "confirmed": bool(args.search and args.confirm and best is not None and confirmed),
         "at_max": best_probe,
         "probes": probes,
         "precision": args.precision,
