@@ -1,0 +1,32 @@
+{
+  "rule": "argmax val category_hierarchical_f1 over saved epoch fractions",
+  "zero_shot_val_f1": 0.7482326746451434,
+  "checkpoints": {
+    "0.25": {
+      "category_hierarchical_f1": 0.7953822988121131,
+      "category_exact_match": 0.568,
+      "brand_score": 0.442,
+      "json_parse_rate": 0.9995
+    },
+    "0.5": {
+      "category_hierarchical_f1": 0.8090396728920323,
+      "category_exact_match": 0.588,
+      "brand_score": 0.4455,
+      "json_parse_rate": 1.0
+    },
+    "0.75": {
+      "category_hierarchical_f1": 0.8202359750667853,
+      "category_exact_match": 0.6155,
+      "brand_score": 0.465,
+      "json_parse_rate": 1.0
+    },
+    "1.0": {
+      "category_hierarchical_f1": 0.8167603360970452,
+      "category_exact_match": 0.6085,
+      "brand_score": 0.4605,
+      "json_parse_rate": 1.0
+    }
+  },
+  "selected": "0.75",
+  "gate_G1_passed": true
+}

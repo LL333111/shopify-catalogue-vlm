@@ -1,0 +1,44 @@
+{
+  "name": "sft_lr1e-4",
+  "args": {
+    "name": "sft_lr1e-4",
+    "lr": 0.0001,
+    "epochs": 1.0,
+    "max_train_samples": 0,
+    "text_only": false,
+    "image_max_tokens": 2048,
+    "desc_max_chars": 6000,
+    "token_budget": 16000,
+    "max_batch": 16,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "warmup_frac": 0.03,
+    "save_fracs": "0.25,0.5,0.75,1.0",
+    "seed": 0,
+    "out_root": "/workspace/checkpoints",
+    "max_steps": 0,
+    "no_grad_ckpt": false,
+    "attn": "sdpa"
+  },
+  "base_model": "Qwen/Qwen3-VL-4B-Instruct",
+  "lora_targets": "model\\.language_model\\.layers\\.\\d+\\.(self_attn\\.(q|k|v|o)_proj|mlp\\.(gate|up|down)_proj)",
+  "trainable_params": 33030144,
+  "n_examples": 36631,
+  "steps": 4743,
+  "examples_seen": 36631,
+  "tokens_seen": 67215584,
+  "gpu_hours": 11.921729872783335,
+  "gpu": "NVIDIA L40S",
+  "max_mem_gb": 23.723416805267334,
+  "checkpoints_sha256": {
+    "/workspace/checkpoints/sft_lr1e-4/frac0.25": "632a438ef074c8b2022777ef7a3397fa2d9441e74077dd7b88995cb485ded969",
+    "/workspace/checkpoints/sft_lr1e-4/frac0.5": "ff0a61e6b7073392902c7c5d27607a002b027fc351142f574eec68d658c94bfe",
+    "/workspace/checkpoints/sft_lr1e-4/frac0.75": "3e38ba0115d5de04b8412823a6a7d7665001776b4f4a7cfc5fb68e882ff38779",
+    "/workspace/checkpoints/sft_lr1e-4/frac1.0": "c6bdf8539d67a462d531d1d9d07b2b5394abc2ced81dcc71a280ac9c1fb81dbc"
+  },
+  "training_only_bounds": {
+    "image_max_tokens": 2048,
+    "desc_max_chars": 6000
+  }
+}

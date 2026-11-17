@@ -1,9 +1,9 @@
 {
-  "name": "timing_test_val",
+  "name": "sft_frac0.75_val",
   "split": "val",
-  "model": "timing_test_val",
+  "model": "sft_frac0.75_val",
   "served_models": [
-    "timing_test_val"
+    "sft_frac0.75_val"
   ],
   "base_url": "http://localhost:8000/v1",
   "config": {
@@ -30,12 +30,13 @@
       ]
     }
   },
-  "concurrency": 64,
-  "n_run": 300,
-  "elapsed_s": 69.54410298400035,
-  "samples_per_s": 4.313809325702561,
+  "concurrency": 48,
+  "text_only": false,
+  "n_run": 2000,
+  "elapsed_s": 1051.6660888829938,
+  "samples_per_s": 1.9017443094739892,
   "reference_commit": "3fbc329939999c13d0a7b5e67fb2092287e06047",
-  "finished_at": "2026-11-17T07:08:31.375030+00:00",
+  "finished_at": "2026-11-17T16:27:44.414822+00:00",
   "host": "56103f7e151c",
   "notes": ""
 }
