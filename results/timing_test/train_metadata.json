@@ -1,0 +1,41 @@
+{
+  "name": "timing_test",
+  "args": {
+    "name": "timing_test",
+    "lr": 0.0001,
+    "epochs": 1.0,
+    "max_train_samples": 1500,
+    "text_only": false,
+    "image_max_tokens": 2048,
+    "desc_max_chars": 6000,
+    "token_budget": 16000,
+    "max_batch": 16,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "warmup_frac": 0.03,
+    "save_fracs": "1.0",
+    "seed": 0,
+    "out_root": "/workspace/checkpoints",
+    "max_steps": 40,
+    "no_grad_ckpt": false,
+    "attn": "sdpa"
+  },
+  "base_model": "Qwen/Qwen3-VL-4B-Instruct",
+  "lora_targets": "model\\.language_model\\.layers\\.\\d+\\.(self_attn\\.(q|k|v|o)_proj|mlp\\.(gate|up|down)_proj)",
+  "trainable_params": 33030144,
+  "n_examples": 1500,
+  "steps": 40,
+  "examples_seen": 323,
+  "tokens_seen": 573112,
+  "gpu_hours": 0.09578635923138891,
+  "gpu": "NVIDIA L40S",
+  "max_mem_gb": 17.633323669433594,
+  "checkpoints_sha256": {
+    "/workspace/checkpoints/timing_test/frac1.0": "be8ff1fce38c9d04de716612ada6581bce7f3e73b97eefce4445708a8b828cb1"
+  },
+  "training_only_bounds": {
+    "image_max_tokens": 2048,
+    "desc_max_chars": 6000
+  }
+}

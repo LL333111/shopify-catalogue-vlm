@@ -1,0 +1,34 @@
+{
+  "scenario": "offline",
+  "n": 200,
+  "errors": 0,
+  "elapsed_s": 97.87213566300125,
+  "samples_per_s": 2.043482536118871,
+  "prompt_tokens_per_s": 4462.475423074946,
+  "output_tokens_per_s": 90.39344998521827,
+  "mean_prompt_tokens": 2183.76,
+  "mean_output_tokens": 44.235,
+  "latency_p50_s": 15.093824093000876,
+  "latency_p99_s": 25.735741371001495,
+  "concurrency": 32,
+  "client_cpu_fraction": 0.007048803396682971,
+  "name": "lgtest_offline_val",
+  "split": "val",
+  "model": "lgtest",
+  "text_only": false,
+  "n_requests_prepared": 200,
+  "request_config": {
+    "use_guided_decoding": false,
+    "temperature": null,
+    "top_p": null,
+    "max_tokens": 256,
+    "timeout_seconds": 600
+  },
+  "vllm_flags": [
+    "--max-model-len=32768",
+    "--limit-mm-per-prompt.video=0",
+    "--no-enable-prefix-caching"
+  ],
+  "reference_commit": "3fbc329939999c13d0a7b5e67fb2092287e06047",
+  "client_cpus": 128
+}

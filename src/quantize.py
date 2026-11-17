@@ -46,6 +46,8 @@ def build_calibration_set(processor, args: argparse.Namespace):
             images_kwargs={"max_pixels": args.image_max_tokens * PIXELS_PER_TOKEN},
         )
 
+    if args.max_calib_samples:
+        hf_calib = hf_calib.select(range(args.max_calib_samples))
     return hf_calib.map(preprocess, remove_columns=hf_calib.column_names)
 
 
@@ -57,6 +59,7 @@ def main() -> None:
     parser.add_argument("--image-max-tokens", type=int, default=2048)
     parser.add_argument("--desc-max-chars", type=int, default=6000)
     parser.add_argument("--max-seq-length", type=int, default=16384)
+    parser.add_argument("--max-calib-samples", type=int, default=None, help="smoke tests only")
     args = parser.parse_args()
 
     from llmcompressor import oneshot
