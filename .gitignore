@@ -1,0 +1,17 @@
+.venv*/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Third-party checkouts are re-cloned at the pinned commit (see docs/stage0.md).
+third_party/
+
+# Raw data and large artifacts never go in git.
+data/raw_tmp/
+data/input_index.jsonl
+checkpoints/
+models/
+*.safetensors
+*.parquet

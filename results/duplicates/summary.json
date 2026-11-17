@@ -1,0 +1,25 @@
+{
+  "dataset_revision": "002ca15536bb015ebc47b99cc2d716d7040bb09e",
+  "n_train": 36631,
+  "train_unique_titles": 36552,
+  "train_unique_images": 36627,
+  "train_rows_without_image": 0,
+  "val": {
+    "n": 2000,
+    "rows_without_image": 0,
+    "title_in_train": 8,
+    "image_in_train": 1,
+    "title_and_image_in_train": 0,
+    "title_or_image_in_train": 9,
+    "title_or_image_in_train_pct": 0.45
+  },
+  "test": {
+    "n": 9658,
+    "rows_without_image": 0,
+    "title_in_train": 43,
+    "image_in_train": 3,
+    "title_and_image_in_train": 2,
+    "title_or_image_in_train": 44,
+    "title_or_image_in_train_pct": 0.46
+  }
+}

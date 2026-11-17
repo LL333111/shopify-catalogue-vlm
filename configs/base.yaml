@@ -1,0 +1,31 @@
+# Shared by every row of the main table. Fixed in Stage 1; do not change afterwards
+# because of any method's results.
+
+dataset:
+  repo_id: Shopify/product-catalogue
+  revision: 002ca15536bb015ebc47b99cc2d716d7040bb09e
+  splits_file: data/splits.json
+
+model:
+  repo_id: Qwen/Qwen3-VL-4B-Instruct
+
+# Request settings. These follow the MLCommons reference: no guided decoding and
+# no sampling parameters in the request, so the server resolves them from the
+# model's generation_config.json (temperature 0.7, top_p 0.8, top_k 20,
+# repetition_penalty 1.0).
+request:
+  use_guided_decoding: false
+  temperature: null
+  top_p: null
+  # Deviation from the reference, which sets no limit: a cap so a runaway
+  # generation cannot stall a run. A valid answer is well under 100 tokens.
+  max_tokens: 256
+  timeout_seconds: 600
+
+# vLLM launch flags, identical for every row (reference flags; no image-pixel
+# overrides, per the benchmark rule that images must not be resized).
+vllm:
+  flags:
+    - --max-model-len=32768
+    - --limit-mm-per-prompt.video=0
+    - --no-enable-prefix-caching

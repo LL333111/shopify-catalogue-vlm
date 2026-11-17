@@ -1,0 +1,55 @@
+[project]
+name = "catalogue-posttrain-quantize-serve"
+version = "0.1.0"
+description = "Post-train, quantize, and serve a 4B VLM on Shopify's product-catalogue benchmark"
+requires-python = ">=3.12,<3.13"
+# Core: data handling, scoring, and the load-generator client. No GPU needed.
+dependencies = [
+  "datasets==5.2.0",
+  "huggingface_hub",
+  "pyarrow",
+  "pillow",
+  "numpy",
+  "pydantic>=2",
+  "pyyaml",
+  "openai[aiohttp]",
+  # Required by the official scorer (third_party/mlcommons-inference).
+  "rapidfuzz",
+  "scikit-learn",
+  "loguru",
+  "tabulate",
+  "pympler",
+  "httpx",
+]
+
+# The training/quantization stack and the serving stack pin different
+# compressed-tensors versions (llmcompressor 0.15.0 -> 0.20.1, vllm 0.34.0 -> 0.17.0),
+# so they MUST live in separate virtual environments:
+#   .venv-train : pip install -e ".[train,quant]"
+#   .venv-serve : pip install -e ".[serve]"
+[project.optional-dependencies]
+train = [
+  "torch==2.14.0",
+  "transformers==5.21.0",
+  "peft==0.21.3",
+  "accelerate>=1.15.0",
+  "qwen-vl-utils",
+]
+quant = [
+  "llmcompressor==0.15.0",
+]
+serve = [
+  "vllm==0.34.0",
+]
+dev = ["pytest", "ruff"]
+
+[build-system]
+requires = ["setuptools>=80"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
