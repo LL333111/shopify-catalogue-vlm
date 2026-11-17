@@ -22,6 +22,10 @@ FLAGS=(
   --no-enable-prefix-caching
 )
 
+# Optional extra flags (e.g. a GPU memory fraction when sharing the GPU).
+read -r -a EXTRA <<< "${EXTRA_FLAGS:-}"
+FLAGS+=("${EXTRA[@]}")
+
 echo "vllm serve $MODEL --served-model-name $SERVED_NAME ${FLAGS[*]}" > "$LOG.cmd"
 nohup "$VENV/bin/vllm" serve "$MODEL" \
   --served-model-name "$SERVED_NAME" \

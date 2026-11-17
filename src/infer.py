@@ -58,6 +58,9 @@ async def run(args: argparse.Namespace) -> None:
             # base64-encoded images are held in memory at once.
             sample = dataset[pos]
             request = build_request(sample, use_guided_decoding=req["use_guided_decoding"])
+            if args.text_only:  # ablation: same prompt without the image part
+                user = request["messages"][1]
+                user["content"] = [part for part in user["content"] if part["type"] == "text"]
             record: dict[str, Any] = {
                 "split": args.split,
                 "idx": idx,
@@ -105,6 +108,7 @@ async def run(args: argparse.Namespace) -> None:
         "base_url": args.base_url,
         "config": config,
         "concurrency": args.concurrency,
+        "text_only": args.text_only,
         "n_run": len(todo),
         "elapsed_s": elapsed,
         "samples_per_s": len(todo) / elapsed if todo else None,
@@ -128,6 +132,7 @@ def main() -> None:
     parser.add_argument("--concurrency", type=int, default=64)
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--allow-test", action="store_true", help="Stage 5 only.")
+    parser.add_argument("--text-only", action="store_true", help="Ablation: omit the image.")
     parser.add_argument("--notes", default="")
     asyncio.run(run(parser.parse_args()))
 
