@@ -1,0 +1,12 @@
+{
+  "source_model": "/workspace/models/row2",
+  "scheme": "w4a16",
+  "ignore": [
+    "re:.*lm_head",
+    "re:.*visual.*"
+  ],
+  "calibration_samples": 256,
+  "quantized_modules": 252,
+  "seconds": 935.6936450209978,
+  "size_gb": 3.2434095218777657
+}

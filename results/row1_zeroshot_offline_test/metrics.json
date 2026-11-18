@@ -1,0 +1,15 @@
+{
+  "n": 9658,
+  "category_hierarchical_f1": 0.7546174747486327,
+  "category_exact_match": 0.5127355560157383,
+  "brand_score": 0.42068751294263823,
+  "is_secondhand_f1": 0.14358974358974358,
+  "is_secondhand_accuracy": 0.9827086353282253,
+  "json_parse_rate": 0.999068130047629,
+  "mean_completion_tokens": 44.15375854214123,
+  "scorer": {
+    "reference_commit": "unknown",
+    "loadgen_stubbed": true,
+    "seed": 12345
+  }
+}

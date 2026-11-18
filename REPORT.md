@@ -1,6 +1,6 @@
 # Report
 
-> **Draft.** Sections 1–4 and 6–8 are final. The held-out test results (section 5) are pending.
+Headline results are on the held-out test split (section 5). Sections 2–4 describe choices made on validation before the test set was read.
 
 ## 1. Setup
 
@@ -40,7 +40,7 @@ Validation, 2,000 examples. The paired bootstrap difference is +0.070 (95% CI +0
 | FP8 | 0.814 | 0.993 (0.985–1.002) | 5.07 GiB |
 | GPTQ W4A16 | 0.815 | 0.994 (0.986–1.003) | 3.35 GiB |
 
-Both variants meet the 99% retention target on the point estimate. The lower confidence bounds are just under 0.99, so a loss of up to about 1.5% cannot be excluded with 2,000 examples.
+Validation, 2,000 examples. Both variants meet the 99% retention target on the point estimate, but the lower bounds are just under 0.99. The test split (section 5) is large enough to settle it.
 
 ## 4. Serving
 
@@ -61,14 +61,47 @@ Validation split, all four rows on the same machine.
 
 ## 5. Held-out test results
 
-*Pending.*
+9,658 examples, read once after every choice above was fixed.
+
+| | Hier. F1 (95% CI) | Exact match | Brand | Second-hand F1 | JSON parse |
+|---|---|---:|---:|---:|---:|
+| 1. Zero-shot | 0.755 (0.748–0.762) | 0.513 | 0.421 | 0.14 | 0.999 |
+| 2. + LoRA | 0.823 (0.817–0.829) | 0.605 | 0.457 | 0.77 | 1.000 |
+| 3. + FP8 | 0.823 (0.817–0.829) | 0.601 | 0.456 | 0.77 | 1.000 |
+| 4. + GPTQ W4A16 | 0.819 (0.813–0.825) | 0.595 | 0.452 | 0.70 | 1.000 |
+
+Paired bootstrap comparisons (10,000 resamples):
+
+| Comparison | F1 difference (95% CI) | Ratio (95% CI) |
+|---|---|---|
+| LoRA vs zero-shot | +0.068 (+0.062 to +0.075) | 1.091 (1.082–1.100) |
+| FP8 vs LoRA | +0.000 (−0.003 to +0.003) | 1.000 (0.997–1.004) |
+| W4A16 vs LoRA | −0.004 (−0.007 to −0.001) | 0.995 (0.991–0.999) |
+| LoRA vs text-only LoRA | +0.005 (+0.001 to +0.010) | |
+
+- **Fine-tuning** gives +6.8 points and the result agrees with validation (0.820). Excluding the 44 test examples duplicated in train changes no row by more than 0.0002.
+- **FP8 is lossless** within ±0.3 points. **W4A16 loses 0.4 points**, a small but statistically clear loss; both retain more than 99% with the whole interval above 0.99.
+- **The image matters little.** The text-only model reaches 0.818; the image adds about half a point.
+- **Where the gain is.** Fine-tuning helps most on products whose correct label is a shallow category (label depth 3: 0.62 → 0.76; depth 6: 0.82 → 0.87). The zero-shot model tends to pick an over-specific leaf; the fine-tuned model has learned when to stop higher in the tree. See `figures/f1_by_depth_test.png`.
+
+**Error review.** I read 20 randomly sampled category errors of the fine-tuned model (`results/final/error_review_test.md`), judging from the title and candidate list only:
+
+| Verdict | Count |
+|---|---:|
+| Model error | 10 (5 are right branch, wrong depth) |
+| Questionable label | 9 |
+| Correct answer absent from candidates | 1 |
+
+Roughly half of the sampled errors are disagreements with labels that are themselves doubtful (for example, a turn signal labelled as a bicycle RPM sensor). This suggests the remaining headroom on this metric is smaller than 1 − 0.82 implies, though 20 examples only support a rough estimate.
+
+**Throughput during the test runs.** These ran on a second L40S (see section 8) that is about 25% slower in absolute terms: 3.10, 3.11, 3.55 and 3.24 samples/s for rows 1–4. The ordering and relative gains (FP8 +14%, W4A16 +4%) match section 4.
 
 ## 6. Limitations
 
 1. **Not the official protocol.** MLCommons reports 0.790 for Qwen3-VL-235B on the official test set and harness. These numbers use a re-split of the public data at a different dataset revision, so the comparison is indicative only. This is not an MLPerf submission.
 2. **One training run.** One learning rate and one seed; run-to-run variance is not measured.
 3. **Train/inference mismatch.** Training capped images at 2,048 tokens and descriptions at 6,000 characters to fit memory; inference uses the full inputs.
-4. **Small-sample metrics.** The second-hand flag has about 15 positives in validation, so its F1 is not reliable there.
+4. **Small-sample metrics.** The second-hand flag is rare (about 15 positives in validation), so its F1 is noisy.
 5. **One GPU type.** Serving results are specific to one L40S and one vLLM version.
 
 ## 7. Deviations from the reference
@@ -81,4 +114,5 @@ Validation split, all four rows on the same machine.
 
 - **Training without gradient checkpointing** ran out of memory on 48 GB; checkpointing plus the image cap fixed it.
 - **First Server search for row 2** was rejected: Poisson sampling produced slightly fewer than the required 1,000 measured requests. The generator now extends the window until the minimum is met; the run was repeated.
+- **Server check on the second machine.** Row 2 at 2.02 QPS, the rate found on the first machine, failed on the slower second machine (p99 19.9 s, stopped early). It is kept in `results/row2_sft_server_test/` and not used.
 - **Loss of the first machine.** The first GPU machine became unavailable during the test runs and could not be restarted on its host. The merged and quantized models were rebuilt on a second L40S from the same adapters with the same recipe. Rebuilt FP8 and W4A16 score 0.816 and 0.817 on validation against 0.814 and 0.815 for the originals. The second machine serves the same model about 25% slower, so serving numbers are reported only from the first machine (validation), and the test split is used for quality only.

@@ -1,0 +1,48 @@
+{
+  "scenario": "server",
+  "max_valid_qps": null,
+  "mode": "fixed_rate",
+  "confirmed": false,
+  "at_max": null,
+  "probes": [
+    {
+      "target_qps": 2.02125,
+      "valid": false,
+      "aborted_early": true,
+      "duration_s": 501.14992634826433,
+      "warmup_s": 30.0,
+      "completed_measured": 355,
+      "achieved_qps": null,
+      "errors": 0,
+      "latency_p50_s": 1.6327082691786927,
+      "latency_p90_s": 7.3302976983904955,
+      "latency_p99_s": 19.85589361590246,
+      "latency_max_s": 22.5944253327325,
+      "max_send_lag_s": 0.07817273843829753,
+      "mean_output_tokens": 39.797183098591546,
+      "client_cpu_fraction": 0.014223089759732405,
+      "seed": 0
+    }
+  ],
+  "precision": 0.05,
+  "latency_constraint": "p99 <= 12.0s",
+  "name": "row2_sft_server_test",
+  "split": "test",
+  "model": "row2_sft",
+  "text_only": false,
+  "n_requests_prepared": 9658,
+  "request_config": {
+    "use_guided_decoding": false,
+    "temperature": null,
+    "top_p": null,
+    "max_tokens": 256,
+    "timeout_seconds": 600
+  },
+  "vllm_flags": [
+    "--max-model-len=32768",
+    "--limit-mm-per-prompt.video=0",
+    "--no-enable-prefix-caching"
+  ],
+  "reference_commit": "unknown",
+  "client_cpus": 256
+}

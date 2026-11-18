@@ -1,0 +1,34 @@
+{
+  "scenario": "offline",
+  "n": 9658,
+  "errors": 0,
+  "elapsed_s": 722.4440094390011,
+  "samples_per_s": 13.368510048965206,
+  "prompt_tokens_per_s": 11415.41751644399,
+  "output_tokens_per_s": 531.8239129678058,
+  "mean_prompt_tokens": 853.9034996893766,
+  "mean_output_tokens": 39.781838890039346,
+  "latency_p50_s": 4.703100607999659,
+  "latency_p99_s": 7.207357135004713,
+  "concurrency": 64,
+  "client_cpu_fraction": 0.05372496421978634,
+  "name": "row2_textonly_offline_test",
+  "split": "test",
+  "model": "row2_textonly",
+  "text_only": true,
+  "n_requests_prepared": 9658,
+  "request_config": {
+    "use_guided_decoding": false,
+    "temperature": null,
+    "top_p": null,
+    "max_tokens": 256,
+    "timeout_seconds": 600
+  },
+  "vllm_flags": [
+    "--max-model-len=32768",
+    "--limit-mm-per-prompt.video=0",
+    "--no-enable-prefix-caching"
+  ],
+  "reference_commit": "unknown",
+  "client_cpus": 256
+}

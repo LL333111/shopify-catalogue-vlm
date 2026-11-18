@@ -1,0 +1,337 @@
+{
+  "source": "row2_sft_offline_test",
+  "seed": 0,
+  "n_errors": 3815,
+  "n_total": 9658,
+  "sample": [
+    {
+      "idx": 8758,
+      "title": "2024 Renewal",
+      "candidates": [
+        "Home & Garden > Lawn & Garden > Gardening > Composting",
+        "Home & Garden > Lawn & Garden > Gardening > Mulch > Organic Mulch",
+        "Home & Garden > Lawn & Garden > Gardening > Hydroponics",
+        "Home & Garden > Lawn & Garden > Gardening > Composting > Composters",
+        "Home & Garden > Lawn & Garden",
+        "Services > Environmental Services",
+        "Services > Home Improvement Services > Outdoor Services",
+        "Home & Garden > Lawn & Garden > Gardening > Hydroponics > Nutrients & Supplements"
+      ],
+      "gt": "Home & Garden > Lawn & Garden",
+      "pred": "Services > Environmental Services"
+    },
+    {
+      "idx": 4026,
+      "title": "LM Sheep Needle Gauge",
+      "candidates": [
+        "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Needles & Hooks > Knitting Needles",
+        "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Needles & Hooks > Knitting Needles > Circular Knitting Needles",
+        "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Needles & Hooks > Knitting Needles > Double-Pointed Knitting Needles",
+        "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Craft Measuring & Marking Tools > Textile Art Gauges & Rulers",
+        "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Crafting Patterns & Molds > Felting Molds > Needle Felting Molds",
+        "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Craft Measuring & Marking Tools > Textile Art Gauges & Rulers > Seam Gauges",
+        "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Needles & Hooks > Hand-Sewing Needles",
+        "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Needles & Hooks > Knitting Needles > Single-Pointed Knitting Needles",
+        "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Needles & Hooks > Hand-Sewing Needles > Embroidery Needles"
+      ],
+      "gt": "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Craft Measuring & Marking Tools > Textile Art Gauges & Rulers > Seam Gauges",
+      "pred": "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Tools > Craft Measuring & Marking Tools > Textile Art Gauges & Rulers"
+    },
+    {
+      "idx": 7811,
+      "title": "Replacement Battery Adhesive Tape Compatible For Samsung Galaxy All Models (Width: 62.5mm / Length: 70mm)",
+      "candidates": [
+        "Electronics > Communications > Telephony > Mobile & Smart Phone Accessories > Mobile Phone Cases > Battery Phone Cases",
+        "Electronics > Communications > Telephony > Mobile & Smart Phone Accessories > Mobile Phone Replacement Parts > Mobile Phone Adhesives & Tapes",
+        "Electronics > Communications > Telephony > Mobile & Smart Phone Accessories > Mobile Phone Replacement Parts > Mobile Phone Screens & Screen Digitizers",
+        "Office Supplies > Shipping Supplies > Packing Tape",
+        "Electronics > Communications > Telephony > Mobile & Smart Phone Accessories > Mobile Phone Skins & Wraps",
+        "Office Supplies > General Office Supplies > Office Tape",
+        "Electronics > Communications > Telephony > Mobile & Smart Phone Accessories > Mobile Phone Replacement Parts > Mobile Phone SIM & MicroSD Card Trays",
+        "Electronics > Electronics Accessories > Power > Batteries > Mobile Phone Batteries",
+        "Electronics > Communications > Telephony > Mobile & Smart Phone Accessories > Mobile Phone Replacement Parts > Mobile Phone Housings & Back Covers"
+      ],
+      "gt": "Electronics > Electronics Accessories > Power > Batteries > Mobile Phone Batteries",
+      "pred": "Electronics > Communications > Telephony > Mobile & Smart Phone Accessories > Mobile Phone Replacement Parts > Mobile Phone Adhesives & Tapes"
+    },
+    {
+      "idx": 9225,
+      "title": "Fulgor Peso/Pino para panela de pressao 1 und",
+      "candidates": [
+        "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware Accessories > Pressure Cooker & Canner Accessories",
+        "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware Accessories > Pressure Cooker & Canner Accessories > Valves",
+        "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Pressure Cookers & Canners > Pressure Cookers",
+        "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware > Pressure Cookers & Canners",
+        "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware Accessories > Pressure Cooker & Canner Accessories > Handles",
+        "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware Accessories > Pressure Cooker & Canner Accessories > Pressure Cooker Timers",
+        "Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts > Motor Vehicle Fuel Systems > Fuel Pressure Regulators",
+        "Home & Garden > Kitchen & Dining > Kitchen Appliances > Food Cookers & Steamers"
+      ],
+      "gt": "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware Accessories > Pressure Cooker & Canner Accessories > Valves",
+      "pred": "Home & Garden > Kitchen & Dining > Cookware & Bakeware > Cookware Accessories > Pressure Cooker & Canner Accessories > Pressure Cooker Timers"
+    },
+    {
+      "idx": 4361,
+      "title": "SP Laidlaw Ferrari 312PB 31-1 DSC06035",
+      "candidates": [
+        "Vehicles & Parts > Vehicles > Motor Vehicles > Motor Sports Vehicles",
+        "Vehicles & Parts > Vehicles > Motor Vehicles > Motor Sports Vehicles > Race Cars > GT Cars",
+        "Vehicles & Parts > Vehicles > Motor Vehicles > Motor Sports Vehicles > Race Cars > Stock Cars",
+        "Vehicles & Parts > Vehicles > Motor Vehicles > Motor Sports Vehicles > Race Cars",
+        "Vehicles & Parts > Vehicles > Motor Vehicles > Motor Sports Vehicles > Race Cars > Touring Cars",
+        "Vehicles & Parts > Vehicles > Motor Vehicles > Motor Sports Vehicles > Racing Karts",
+        "Vehicles & Parts > Vehicles > Motor Vehicles > Motor Sports Vehicles > Race Cars > Sports Prototypes",
+        "Vehicles & Parts > Vehicles > Motor Vehicles > Motor Sports Vehicles > Race Cars > Formula Cars",
+        "Vehicles & Parts > Vehicles > Motor Vehicles > Motor Sports Vehicles > Racing Sidecars"
+      ],
+      "gt": "Vehicles & Parts > Vehicles > Motor Vehicles > Motor Sports Vehicles",
+      "pred": "Vehicles & Parts > Vehicles > Motor Vehicles > Motor Sports Vehicles > Race Cars > Formula Cars"
+    },
+    {
+      "idx": 402,
+      "title": "DROP SHOT DAILOS",
+      "candidates": [
+        "Sporting Goods > Athletics > Cricket > Cricket Shoes",
+        "Apparel & Accessories > Shoes > Flats",
+        "Sporting Goods > Athletics > Racquetball & Squash > Racquetball & Squash Balls",
+        "Sporting Goods > Athletics > Tennis > Tennis Shoes",
+        "Apparel & Accessories > Shoes > Sandals",
+        "Sporting Goods > Athletics > Dancing > Dancing Shoes",
+        "Sporting Goods > Outdoor Recreation > Outdoor Games > Badminton > Badminton Shoes",
+        "Sporting Goods > Athletics > Basketball > Basketball Shoes",
+        "Sporting Goods > Athletics > Racquetball & Squash > Racquetball & Squash Shoes"
+      ],
+      "gt": "Sporting Goods > Athletics > Racquetball & Squash > Racquetball & Squash Balls",
+      "pred": "Sporting Goods > Athletics > Racquetball & Squash > Racquetball & Squash Shoes"
+    },
+    {
+      "idx": 2664,
+      "title": "Maternity tankini Kenya",
+      "candidates": [
+        "Apparel & Accessories > Clothing > Maternity Clothing > Maternity Swimwear > Cover Ups",
+        "Apparel & Accessories > Clothing > Maternity Clothing > Maternity Tops > Bodysuits",
+        "Apparel & Accessories > Clothing > Maternity Clothing > Maternity Swimwear > Swim Dresses",
+        "Apparel & Accessories > Clothing > Maternity Clothing > Maternity Swimwear",
+        "Apparel & Accessories > Clothing > Maternity Clothing > Maternity Swimwear > One-Piece Swimsuits",
+        "Apparel & Accessories > Clothing > Maternity Clothing > Maternity Swimwear > Swimwear Tops",
+        "Apparel & Accessories > Clothing > Maternity Clothing > Maternity Swimwear > Swim Boxers",
+        "Apparel & Accessories > Clothing > Maternity Clothing > Maternity Swimwear > Classic Bikinis"
+      ],
+      "gt": "Apparel & Accessories > Clothing > Maternity Clothing > Maternity Swimwear",
+      "pred": "Apparel & Accessories > Clothing > Maternity Clothing > Maternity Swimwear > Swimwear Tops"
+    },
+    {
+      "idx": 5249,
+      "title": "JOBISSIMO - INZEBOX CAIXA DE METAL C/ ÍMAN PROFISSÕES",
+      "candidates": [
+        "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Paper & Magnetic Dolls",
+        "Toys & Games > Toys > Pretend Play > Pretend Professions & Role Playing",
+        "Toys & Games > Toys > Art & Drawing Toys > Play Dough & Putty > Magnetic Putty",
+        "Toys & Games > Toys > Executive Toys > Magnet Toys",
+        "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Toy Playsets",
+        "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Toy Playsets > Doll House Playsets",
+        "Toys & Games > Toys > Building Toys > Wooden Blocks",
+        "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Toy Playsets > Castle Playsets"
+      ],
+      "gt": "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Paper & Magnetic Dolls",
+      "pred": "Toys & Games > Toys > Pretend Play > Pretend Professions & Role Playing"
+    },
+    {
+      "idx": 4981,
+      "title": "Guardian Gear Handi-Drink™ Water Dispenser -Hot Pink",
+      "candidates": [
+        "Animals & Pet Supplies > Pet Supplies > Pet Bowls, Feeders & Waterers",
+        "Animals & Pet Supplies > Pet Supplies > Pet Waste Bag Dispensers & Holders > Storage Dispensers",
+        "Animals & Pet Supplies > Pet Supplies > Pet Bowls, Feeders & Waterers > Water Fountains",
+        "Animals & Pet Supplies > Pet Supplies > Pet Waste Bag Dispensers & Holders > Standard Dispensers & Holders",
+        "Animals & Pet Supplies > Pet Supplies > Pet Bowls, Feeders & Waterers > Travel Bowls",
+        "Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Water Bottles",
+        "Animals & Pet Supplies > Pet Supplies > Pet Waste Bag Dispensers & Holders",
+        "Animals & Pet Supplies > Pet Supplies > Pet Bowls, Feeders & Waterers > Water Dispensers"
+      ],
+      "gt": "Animals & Pet Supplies > Pet Supplies > Pet Bowls, Feeders & Waterers > Travel Bowls",
+      "pred": "Animals & Pet Supplies > Pet Supplies > Pet Bowls, Feeders & Waterers > Water Dispensers"
+    },
+    {
+      "idx": 4217,
+      "title": "1 Pairs Silicone Heel Pads, Shoes Insole (12×7×2 Cm)",
+      "candidates": [
+        "Apparel & Accessories > Shoe Accessories > Shoe Inserts",
+        "Health & Beauty > Personal Care > Foot Care > Insoles & Inserts",
+        "Apparel & Accessories > Shoes > Heels",
+        "Health & Beauty > Personal Care > Foot Care > Insoles & Inserts > Arch Supports",
+        "Apparel & Accessories > Shoe Accessories > Shoe Inserts > Heel Cushions",
+        "Apparel & Accessories > Shoe Accessories > Shoe Inserts > Arch Supports",
+        "Health & Beauty > Personal Care > Foot Care > Insoles & Inserts > Metatarsal Cushions",
+        "Health & Beauty > Personal Care > Foot Care > Insoles & Inserts > Gel Heel Pads"
+      ],
+      "gt": "Apparel & Accessories > Shoe Accessories > Shoe Inserts > Heel Cushions",
+      "pred": "Health & Beauty > Personal Care > Foot Care > Insoles & Inserts > Gel Heel Pads"
+    },
+    {
+      "idx": 9529,
+      "title": "Vicma richtingaanwijzers turn signal vo li,hi re, 7581",
+      "candidates": [
+        "Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts > Motor Vehicle Lighting > Turn Signals",
+        "Sporting Goods > Outdoor Recreation > Cycling > Bicycle Accessories > Bicycle Computer Accessories > Bicycle Computer RPM Sensors",
+        "Vehicles & Parts > Vehicle Parts & Accessories > Vehicle Safety & Security > Vehicle Alarms & Locks > Motorcycle Alarms & Locks",
+        "Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts > Motor Vehicle Sensors & Gauges",
+        "Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts > Motor Vehicle Sensors & Gauges > Knock Sensors",
+        "Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts > Motor Vehicle Braking > Brake Light Switches",
+        "Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts > Motor Vehicle Sensors & Gauges > Tachometers",
+        "Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts > Motor Vehicle Engine Oil Circulation > Oil Pressure Sensors"
+      ],
+      "gt": "Sporting Goods > Outdoor Recreation > Cycling > Bicycle Accessories > Bicycle Computer Accessories > Bicycle Computer RPM Sensors",
+      "pred": "Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts > Motor Vehicle Lighting > Turn Signals"
+    },
+    {
+      "idx": 8107,
+      "title": "Effea Ginocchiera Volley",
+      "candidates": [
+        "Business & Industrial > Work Safety Protective Gear > Safety Knee Pads",
+        "Sporting Goods > Athletics > Volleyball > Volleyball Protective Gear > Volleyball Knee Pads",
+        "Sporting Goods > Outdoor Recreation > Cycling > Cycling Apparel & Accessories > Bicycle Protective Pads",
+        "Sporting Goods > Outdoor Recreation > Hunting & Shooting > Airsoft > Airsoft Protective Gear > Airsoft Pads",
+        "Sporting Goods > Athletics > Volleyball > Volleyball Protective Gear",
+        "Sporting Goods > Outdoor Recreation > Hunting & Shooting > Paintball > Paintball Protective Gear > Paintball Pads",
+        "Sporting Goods > Athletics > Wrestling > Wrestling Protective Gear > Wrestling Knee Pads",
+        "Sporting Goods > Outdoor Recreation > Skateboarding > Skateboarding Protective Gear > Skateboarding Pads"
+      ],
+      "gt": "Sporting Goods > Athletics > Volleyball > Volleyball Protective Gear",
+      "pred": "Sporting Goods > Athletics > Volleyball > Volleyball Protective Gear > Volleyball Knee Pads"
+    },
+    {
+      "idx": 8619,
+      "title": "Pat box spring cu saltea, albastru, 100x200 cm, textil",
+      "candidates": [
+        "Furniture > Beds & Accessories > Beds & Bed Frames > Air Beds",
+        "Furniture > Beds & Accessories > Mattresses > Innerspring Mattresses",
+        "Furniture > Beds & Accessories > Mattress Foundations > Platform Bases",
+        "Furniture > Beds & Accessories > Mattress Foundations",
+        "Furniture > Beds & Accessories > Beds & Bed Frames > Divan Beds & Bed Frames",
+        "Furniture > Beds & Accessories > Beds & Bed Frames > Slat Beds & Bed Frames",
+        "Furniture > Beds & Accessories > Mattress Foundations > Box Springs",
+        "Furniture > Beds & Accessories > Mattress Foundations > Foundations & Frames-in-One",
+        "Furniture > Beds & Accessories > Beds & Bed Frames > Platform Beds & Bed Frames"
+      ],
+      "gt": "Furniture > Beds & Accessories > Mattresses > Innerspring Mattresses",
+      "pred": "Furniture > Beds & Accessories > Mattress Foundations > Box Springs"
+    },
+    {
+      "idx": 3170,
+      "title": "Norvo | Den beste gaven—Mini Pocket Saksofon",
+      "candidates": [
+        "Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments > Percussion > Hand Percussion > Tambourines > Handheld Tambourines",
+        "Arts & Entertainment > Hobbies & Creative Arts > Musical Instrument & Orchestra Accessories > Woodwind Instrument Accessories > Saxophone Accessories > Saxophone Parts > Saxophone Mouthpieces",
+        "Arts & Entertainment > Hobbies & Creative Arts > Musical Instrument & Orchestra Accessories > Woodwind Instrument Accessories > Saxophone Accessories > Saxophone Parts > Saxophone Mouthpieces > Alto Saxophone Mouthpieces",
+        "Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments > String Instruments > Ukuleles > Pocket Ukuleles",
+        "Arts & Entertainment > Hobbies & Creative Arts > Musical Instrument & Orchestra Accessories > Woodwind Instrument Accessories > Saxophone Accessories > Saxophone Parts > Saxophone Mouthpieces > Tenor Saxophone Mouthpieces",
+        "Arts & Entertainment > Hobbies & Creative Arts > Musical Instrument & Orchestra Accessories > Woodwind Instrument Accessories > Saxophone Accessories",
+        "Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments > Woodwinds > Saxophones",
+        "Arts & Entertainment > Hobbies & Creative Arts > Musical Instrument & Orchestra Accessories > Woodwind Instrument Accessories > Saxophone Accessories > Saxophone Parts > Saxophone Small Parts",
+        "Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments > Woodwinds > Saxophones > Bass Saxophones"
+      ],
+      "gt": "Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments > Woodwinds > Saxophones > Bass Saxophones",
+      "pred": "Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments > Woodwinds > Saxophones"
+    },
+    {
+      "idx": 4884,
+      "title": "Nomad 3.75 oz. Bitters Bottle",
+      "candidates": [
+        "Arts & Entertainment > Hobbies & Creative Arts > Homebrewing & Winemaking Supplies > Bottling Bottles",
+        "Home & Garden > Kitchen & Dining > Tableware > Serveware > Serving Pitchers & Carafes",
+        "Home & Garden > Kitchen & Dining > Barware > Cocktail Shakers & Tools > Cocktail Strainers",
+        "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Beverage Dispensers",
+        "Home & Garden > Kitchen & Dining > Barware > Cocktail Shakers & Tools",
+        "Home & Garden > Kitchen & Dining > Barware > Cocktail Shakers & Tools > Cocktail Shakers",
+        "Home & Garden > Kitchen & Dining > Barware > Cocktail Shakers & Tools > Bottle Openers",
+        "Home & Garden > Kitchen & Dining > Barware > Bottle Caps",
+        "Home & Garden > Kitchen & Dining > Kitchen Appliance Accessories > Soda Maker Accessories > Bottles"
+      ],
+      "gt": "Home & Garden > Kitchen & Dining > Barware > Bottle Caps",
+      "pred": "Home & Garden > Kitchen & Dining > Barware > Cocktail Shakers & Tools > Cocktail Strainers"
+    },
+    {
+      "idx": 3744,
+      "title": "Hunter Irrigation HK-33 Quick Coupler Valve Key 3/4\" Valve 3/4\" Inlet",
+      "candidates": [
+        "Hardware > Plumbing > Water Timers",
+        "Home & Garden > Lawn & Garden > Watering & Irrigation > Sprinkler Accessories > Sprinkler Valves",
+        "Hardware > Plumbing > Plumbing Fittings & Supports > Pipe Connectors > Couplings",
+        "Home & Garden > Lawn & Garden > Watering & Irrigation > Garden Hose Fittings & Valves",
+        "Home & Garden > Lawn & Garden > Watering & Irrigation > Garden Hose Fittings & Valves > Garden Hose Fittings",
+        "Home & Garden > Lawn & Garden > Watering & Irrigation > Garden Hose Fittings & Valves > Garden Hose Valves",
+        "Hardware > Plumbing > Plumbing Fittings & Supports > Plumbing Valves",
+        "Business & Industrial > Heavy Machinery > Heavy Machinery Parts & Accessories > Quick Couplers"
+      ],
+      "gt": "Home & Garden > Lawn & Garden > Watering & Irrigation > Garden Hose Fittings & Valves > Garden Hose Valves",
+      "pred": "Home & Garden > Lawn & Garden > Watering & Irrigation > Sprinkler Accessories > Sprinkler Valves"
+    },
+    {
+      "idx": 6028,
+      "title": "NHL All-Star Hockey Game",
+      "candidates": [
+        "Sporting Goods > Indoor Games > Air Hockey > Air Hockey Tables",
+        "Sporting Goods > Indoor Games > Air Hockey",
+        "Sporting Goods > Indoor Games > Air Hockey > Air Hockey Equipment > Air Hockey Pucks",
+        "Sporting Goods > Indoor Games > Table Shuffleboard > Table Shuffleboard Pucks",
+        "Sporting Goods > Indoor Games > Air Hockey > Air Hockey Equipment > Air Hockey Pushers",
+        "Sporting Goods > Athletics > Figure Skating & Hockey > Hockey Balls & Pucks > Hockey Pucks",
+        "Sporting Goods > Indoor Games > Air Hockey > Air Hockey Table Parts > Air Hockey Table Boards",
+        "Sporting Goods > Indoor Games > Air Hockey > Air Hockey Equipment"
+      ],
+      "gt": "Sporting Goods > Indoor Games > Air Hockey",
+      "pred": "Sporting Goods > Indoor Games > Air Hockey > Air Hockey Tables"
+    },
+    {
+      "idx": 9241,
+      "title": "Nuuroo Nuuroo Levi Toilettas",
+      "candidates": [
+        "Baby & Toddler > Diapering > Diaper Pail Accessories > Diaper Pail Bags",
+        "Luggage & Bags > Cosmetic & Toiletry Bags",
+        "Baby & Toddler > Diapering > Diaper Pail Accessories > Diaper Pail Refills",
+        "Baby & Toddler > Diapering > Diaper Kits > Diaper Bag Kits",
+        "Baby & Toddler > Diapering > Diaper Wet Bags > Hanging Diaper Wet Bags",
+        "Hardware > Plumbing > Plumbing Fixture Hardware & Parts > Toilet & Bidet Accessories > Toilet Seat Covers",
+        "Baby & Toddler > Diapering > Diaper Pail Accessories",
+        "Luggage & Bags > Cosmetic & Toiletry Bags > Toiletry Bags",
+        "Luggage & Bags > Diaper Bags"
+      ],
+      "gt": "Hardware > Plumbing > Plumbing Fixture Hardware & Parts > Toilet & Bidet Accessories > Toilet Seat Covers",
+      "pred": "Baby & Toddler > Diapering > Diaper Pail Accessories > Diaper Pail Bags"
+    },
+    {
+      "idx": 9410,
+      "title": "Burgundy Baby Wipes",
+      "candidates": [
+        "Baby & Toddler > Diapering > Baby Wipe Dispensers & Warmers > Portable Wipe Dispensers",
+        "Baby & Toddler > Diapering > Diapers > Cloth Diapers",
+        "Baby & Toddler > Diapering > Baby Wipes > Disposable Baby Wipes",
+        "Baby & Toddler > Nursing & Feeding > Nursing Pads & Shields > Reusable Nursing Pads",
+        "Baby & Toddler > Diapering > Baby Wipes",
+        "Baby & Toddler > Diapering > Baby Wipes > Flushable Baby Wipes",
+        "Baby & Toddler > Diapering > Baby Wipes > Cloth Baby Wipes",
+        "Baby & Toddler > Baby Health > Pacifier Wipes"
+      ],
+      "gt": "Baby & Toddler > Diapering > Baby Wipes",
+      "pred": "Baby & Toddler > Diapering > Baby Wipes > Cloth Baby Wipes"
+    },
+    {
+      "idx": 2236,
+      "title": "25187-1",
+      "candidates": [
+        "Hardware > Heating, Ventilation & Air Conditioning > HVAC Controls > Control Panels",
+        "Home & Garden > Household Appliance Accessories > Furnace & Boiler Accessories > Thermocouples",
+        "Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts > Motor Vehicle Cooling Systems > Thermostats",
+        "Animals & Pet Supplies > Pet Supplies > Fish & Aquatic Supplies > Aquarium Temperature Controllers > Digital Temperature Controllers",
+        "Home & Garden > Household Appliance Accessories > Furnace & Boiler Accessories > Furnace & Boiler Fixing Kits",
+        "Hardware > Power & Electrical Supplies > Electrical Switches > Specialty Electrical Switches & Relays > Pressure Switches",
+        "Hardware > Power & Electrical Supplies > Wall Socket Controls & Sensors > Timer Switches",
+        "Hardware > Tools > Measuring Tools & Sensors > Thermocouples & Thermopiles",
+        "Hardware > Heating, Ventilation & Air Conditioning > HVAC Controls > Thermostats"
+      ],
+      "gt": "Home & Garden > Household Appliance Accessories > Furnace & Boiler Accessories > Furnace & Boiler Fixing Kits",
+      "pred": "Hardware > Tools > Measuring Tools & Sensors > Thermocouples & Thermopiles"
+    }
+  ]
+}
