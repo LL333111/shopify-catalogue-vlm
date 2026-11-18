@@ -19,7 +19,7 @@ scripts/serve_vllm.sh "$MODEL" "$PREFIX"
 PID=$(cat /workspace/logs/vllm.pid)
 LOG="/workspace/logs/vllm_${PREFIX}.log"
 trap 'kill $PID 2>/dev/null || true; sleep 8' EXIT
-for _ in $(seq 1 180); do
+for _ in $(seq 1 360); do
   curl -sf localhost:8000/v1/models > /dev/null && break
   kill -0 "$PID" 2>/dev/null || { echo "vLLM died"; tail -30 "$LOG"; exit 1; }
   sleep 5

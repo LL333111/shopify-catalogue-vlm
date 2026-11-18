@@ -107,6 +107,8 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--split", required=True, choices=["val", "test"])
     parser.add_argument("--rows", nargs="+", required=True, help="label=results_prefix")
+    parser.add_argument("--serving-split", default=None, choices=["val", "test"],
+                        help="split whose runs supply the serving columns (default: --split)")
     parser.add_argument("--ablation", default=None, help="results prefix of the text-only run")
     parser.add_argument("--out", type=Path, default=ROOT / "results" / "final")
     parser.add_argument("--exclude", type=Path, default=ROOT / "results/duplicates/affected_indices.json")
@@ -120,10 +122,13 @@ def main() -> None:
         name = f"{prefix}_offline_{args.split}"
         scored[label] = load_scored(name)
         metrics = aggregate(scored[label])
-        offline = read_json(ROOT / "results" / name / "offline.json") or {}
-        server = read_json(ROOT / "results" / f"{prefix}_server_{args.split}" / "server.json") or {}
+        serving = args.serving_split or args.split
+        serving_name = f"{prefix}_offline_{serving}"
+        offline = read_json(ROOT / "results" / serving_name / "offline.json") or {}
+        server = read_json(ROOT / "results" / f"{prefix}_server_{serving}" / "server.json") or {}
         at_max = server.get("at_max") or {}
-        env = read_json(ROOT / "results" / name / "serving_env.json") or {}
+        env = read_json(ROOT / "results" / serving_name / "serving_env.json") or {}
+        same_split_offline = read_json(ROOT / "results" / name / "offline.json") or {}
         weights = env.get("model_weights_gib")
         table[label] = {
             "results_prefix": prefix,
@@ -137,6 +142,8 @@ def main() -> None:
             "server_p99_s": at_max.get("latency_p99_s"),
             "server_confirmed": server.get("confirmed"),
             "server_mode": server.get("mode", "search"),
+            "serving_split": serving,
+            "quality_run_samples_per_s": same_split_offline.get("samples_per_s"),
             "weights_gib": float(weights) if weights else None,
         }
 
