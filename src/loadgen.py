@@ -267,8 +267,13 @@ async def run_server(args, items, client: Client) -> dict[str, Any]:
 
     confirmed = False
     if not args.search:
-        await probe(args.qps)
-        best = args.qps if probes[-1]["valid"] else None
+        # Fixed rate; with --confirm the rate must hold in two independent runs.
+        ok = await probe(args.qps)
+        if ok and args.confirm:
+            ok = await probe(args.qps)
+            probes[-1]["confirmation"] = True
+        confirmed = ok
+        best = args.qps if ok else None
     else:
         lo, hi = None, None  # highest valid, lowest invalid
         qps = args.qps_hint
@@ -303,7 +308,8 @@ async def run_server(args, items, client: Client) -> dict[str, Any]:
     return {
         "scenario": "server",
         "max_valid_qps": best,
-        "confirmed": bool(args.search and args.confirm and best is not None and confirmed),
+        "mode": "search" if args.search else "fixed_rate",
+        "confirmed": bool(args.confirm and best is not None and confirmed),
         "at_max": best_probe,
         "probes": probes,
         "precision": args.precision,

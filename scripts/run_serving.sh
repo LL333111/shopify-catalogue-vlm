@@ -56,7 +56,9 @@ PYEOF
 fi
 
 if [ "${SKIP_SERVER:-0}" != "1" ]; then
+  # SERVER_QPS set: validate that fixed rate twice (no search); otherwise search from the hint.
+  if [ -n "${SERVER_QPS:-}" ]; then MODE=(--qps "$SERVER_QPS" --confirm); else MODE=(--search --confirm --qps-hint "$QPS_HINT"); fi
   $PY -m src.loadgen server --name "$SERVER" --split "$SPLIT" --model "$PREFIX" \
-    --search --confirm --qps-hint "$QPS_HINT" "$@" 2>&1 | grep -v "Warning\|cached" | grep -E "^probe|max_valid_qps|prepared"
+    "${MODE[@]}" "$@" 2>&1 | grep -v "Warning\|cached" | grep -E "^probe|max_valid_qps|prepared"
 fi
 echo "RUN_SERVING DONE $PREFIX $SPLIT"

@@ -28,6 +28,12 @@ from src.score import aggregate, parse_records  # noqa: E402
 
 REFERENCE_F1 = 0.7903037  # official 235B mean of 10 runs; context only
 N_BOOT = 10_000
+NAMES = {
+    "row1": "1. Qwen3-VL-4B zero-shot",
+    "row2": "2. + LoRA fine-tune",
+    "row3": "3. + FP8",
+    "row4": "4. + GPTQ W4A16",
+}
 
 
 def load_scored(name: str) -> list[dict]:
@@ -117,6 +123,8 @@ def main() -> None:
         offline = read_json(ROOT / "results" / name / "offline.json") or {}
         server = read_json(ROOT / "results" / f"{prefix}_server_{args.split}" / "server.json") or {}
         at_max = server.get("at_max") or {}
+        env = read_json(ROOT / "results" / name / "serving_env.json") or {}
+        weights = env.get("model_weights_gib")
         table[label] = {
             "results_prefix": prefix,
             **{k: v for k, v in metrics.items() if k != "scorer"},
@@ -128,6 +136,8 @@ def main() -> None:
             "server_p50_s": at_max.get("latency_p50_s"),
             "server_p99_s": at_max.get("latency_p99_s"),
             "server_confirmed": server.get("confirmed"),
+            "server_mode": server.get("mode", "search"),
+            "weights_gib": float(weights) if weights else None,
         }
 
     comparisons: dict[str, dict] = {}
@@ -181,18 +191,18 @@ def main() -> None:
 
     # Markdown table.
     lines = [
-        "| Row | Hier. F1 (95% CI) | Exact | Brand | 2nd-hand F1 | Parse | Out tok | Offline samples/s | Server max QPS | p50 / p99 s |",
-        "|---|---|---:|---:|---:|---:|---:|---:|---:|---|",
+        "| Model | Hier. F1 (95% CI) | Exact | Brand | Parse | Weights GiB | Offline samples/s | Server QPS | p99 s |",
+        "|---|---|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for label, t in table.items():
         lines.append(
-            f"| {label} | {t['category_hierarchical_f1']:.4f} ({t['f1_ci95'][0]:.4f}–{t['f1_ci95'][1]:.4f}) "
-            f"| {t['category_exact_match']:.4f} | {t['brand_score']:.4f} | {t['is_secondhand_f1']:.4f} "
-            f"| {t['json_parse_rate']:.4f} | {fmt(t['mean_completion_tokens'], '.1f')} "
+            f"| {NAMES.get(label, label)} | {t['category_hierarchical_f1']:.3f} ({t['f1_ci95'][0]:.3f}–{t['f1_ci95'][1]:.3f}) "
+            f"| {t['category_exact_match']:.3f} | {t['brand_score']:.3f} "
+            f"| {t['json_parse_rate']:.3f} | {fmt(t['weights_gib'], '.2f')} "
             f"| {fmt(t['offline_samples_per_s'], '.2f')} | {fmt(t['server_max_qps'], '.2f')} "
-            f"| {fmt(t['server_p50_s'], '.1f')} / {fmt(t['server_p99_s'], '.1f')} |"
+            f"| {fmt(t['server_p99_s'], '.1f')} |"
         )
-    lines.append(f"| Ref (235B, cited) | {REFERENCE_F1:.4f} | | | | | | | | |")
+    lines.append(f"| Reference: Qwen3-VL-235B (cited, official protocol) | {REFERENCE_F1:.3f} | | | | | | | |")
     (args.out / f"table_{args.split}.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("\n".join(lines))
     print(json.dumps({"comparisons": comparisons, "ablation": ablation, "dedup": dedup}, indent=2))
@@ -214,7 +224,7 @@ def main() -> None:
         if t["offline_samples_per_s"] is None:
             continue
         ax.scatter(t["offline_samples_per_s"], t["category_hierarchical_f1"], s=60)
-        ax.annotate(label, (t["offline_samples_per_s"], t["category_hierarchical_f1"]),
+        ax.annotate(NAMES.get(label, label), (t["offline_samples_per_s"], t["category_hierarchical_f1"]),
                     textcoords="offset points", xytext=(6, 6))
     ax.axhline(REFERENCE_F1, linestyle="--", color="gray", linewidth=1)
     ax.annotate("235B reference (different protocol)", (ax.get_xlim()[0], REFERENCE_F1),
@@ -230,7 +240,7 @@ def main() -> None:
     width = 0.8 / max(1, len(labels))
     for k, label in enumerate(labels):
         values = [depth[label].get(str(d), {}).get("f1", 0) for d in depths]
-        ax.bar([i + k * width for i in range(len(depths))], values, width, label=label)
+        ax.bar([i + k * width for i in range(len(depths))], values, width, label=NAMES.get(label, label))
     counts = depth[labels[0]]
     ax.set_xticks([i + 0.4 - width / 2 for i in range(len(depths))])
     ax.set_xticklabels([f"{d}\n(n={counts.get(str(d), {}).get('n', 0)})" for d in depths])
